@@ -1,0 +1,66 @@
+{
+  "name": "api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-30",
+  "ai": {
+    "binding": "AI"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "buvo",
+      "database_id": "35dfd928-5e89-4194-ac18-eec1260e984c"
+    }
+  ],
+  "dev": {
+    "port": 8788,
+    "local_protocol": "http",
+    "persist": "./dev-data"
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "MyDurableObject"
+      ]
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_DURABLE_OBJECT",
+        "class_name": "MyDurableObject"
+      }
+    ]
+  },
+  "vars": {
+    "GOOGLE_CLIENT_ID": "454748244424-fhvuhjlssad460vjc1ejiq1ulnd4dje6.apps.googleusercontent.com",
+    "BASE_URL": "http://localhost:8788",
+    "FRONTEND_URL": "http://localhost:5173"
+  },
+  "env": {
+    "production2": {
+      "name": "api",
+      "vars": {
+        "GOOGLE_CLIENT_ID": "454748244424-fhvuhjlssad460vjc1ejiq1ulnd4dje6.apps.googleusercontent.com",
+        "BASE_URL": "https://api.buvo1.workers.dev",
+        "FRONTEND_URL": "https://buvo1.pages.dev"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "buvo",
+          "database_id": "35dfd928-5e89-4194-ac18-eec1260e984c"
+        }
+      ],
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "MY_DURABLE_OBJECT",
+            "class_name": "MyDurableObject"
+          }
+        ]
+      }
+    }
+  }
+}

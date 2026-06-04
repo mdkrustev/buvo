@@ -1,0 +1,12 @@
+new migration:
+wrangler d1 migrations create DB init_schema
+
+update database:
+wrangler d1 migrations apply DB --remote
+
+
+npx wrangler dev --remote
+
+npx wrangler secret put GOOGLE_CLIENT_SECRET
+npx wrangler secret put GOOGLE_CLIENT_SECRET --env production2
+npx wrangler deploy --env production2
