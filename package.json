@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "play:win": "start /b npm run dev --prefix server && npm run dev --prefix client",
-    "play:mac": "sh -c '(cd server && npm run dev) & sleep 3 && (cd client && npm run dev) & wait'"
+    "onwin": "start /b npm run dev --prefix server && npm run dev --prefix client",
+    "onmac": "sh -c '(cd server && npm run dev) & sleep 3 && (cd client && npm run dev) & wait'",
+    "update": "cd server && npx wrangler d1 migrations apply DB"
   }
 }

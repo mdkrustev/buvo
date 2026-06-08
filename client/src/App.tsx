@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { store } from './shared/store';
 import { useAuth } from './auth/hooks/useAuth';
 import { openGoogleLoginPopup } from "./auth/login";
-import "../public/home.css"
+import "./style/app.css"
 
 function AppContent() {
   const {
