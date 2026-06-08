@@ -55,6 +55,58 @@ export abstract class BaseRoute<TContext = RequestContext> {
     return this.config.method;
   }
 
+  // ─── URL HELPERS ───
+
+  protected url(req: Request): URL {
+    return new URL(req.url);
+  }
+
+  protected query(req: Request): URLSearchParams {
+    return new URL(req.url).searchParams;
+  }
+
+  protected param(req: Request, key: string): string | null {
+    return new URL(req.url).searchParams.get(key);
+  }
+
+  protected params(req: Request): Record<string, string> {
+    const result: Record<string, string> = {};
+    new URL(req.url).searchParams.forEach((value, key) => {
+      result[key] = value;
+    });
+    return result;
+  }
+
+  protected pathname(req: Request): string {
+    return new URL(req.url).pathname;
+  }
+
+  // ─── BODY HELPERS ───
+
+  protected async body<T = unknown>(req: Request): Promise<T> {
+    return req.json() as Promise<T>;
+  }
+
+  protected async bodyText(req: Request): Promise<string> {
+    return req.text();
+  }
+
+  protected async bodyForm(req: Request): Promise<Record<string, string>> {
+    const form = await req.formData();
+    const result: Record<string, string> = {};
+    form.forEach((value, key) => {
+      result[key] = value.toString();
+    });
+    return result;
+  }
+
+  // ─── HEADER HELPERS ───
+
+  protected header(req: Request, key: string): string | null {
+    return req.headers.get(key);
+  }
+
+
   /* -------------------- JSON Helper -------------------- */
 
   protected json(status: HttpStatus, data: unknown, headers?: HeadersInit): Response {

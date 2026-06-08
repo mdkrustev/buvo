@@ -17,6 +17,7 @@ export const useAuth = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    localStorage.removeItem('buvo_user');
   };
 
   const refreshUser = () => {

@@ -1,13 +1,539 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="icon-on.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BUVO</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="api-url" content="%VITE_API_URL%">
+  <title>Buvo — AI Chat Widget for Your Business</title>
+  <meta name="description"
+    content="Buvo gives your business an AI assistant that lives on your website, answers customer questions instantly, and never sleeps. One script tag. Zero setup." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://buvo.io/" />
+  <meta property="og:title" content="Buvo — AI Chat Widget for Your Business" />
+  <meta property="og:description"
+    content="Give your website an AI brain. Buvo answers customer questions instantly, 24/7." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://buvo.io/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Buvo","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"AI-powered chat widget for businesses. Embed on any website with one script tag.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+
+  <link rel="stylesheet" href="/src/assets/home.css" />
+</head>
+
+<body>
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Buvo home">
+      <!-- SVG LOGO -->
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none">
+        <rect width="44" height="44" rx="11" fill="#c8f060"></rect>
+        <path d="M24 8L14 23H22L20 36L30 21H22L24 8Z" fill="#080808" stroke="#080808" stroke-width="0.5"
+          stroke-linejoin="round"></path>
+      </svg>
+      <span class="nav-logo-text">buvo</span>
+    </a>
+    </div>
+    <ul class="nav-links" role="navigation" aria-label="Main navigation">
+      <li><a href="/console">Console</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a id="get-started-btn" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-badge" role="status">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      Now in public beta — free to try
+    </div>
+
+    <h1 id="hero-heading">
+      Your website deserves<br />
+      an <em>AI that answers</em><br />
+      every question
+    </h1>
+
+    <p class="hero-sub">
+      Buvo is an embeddable chat widget powered by AI. Train it on your business knowledge and let it handle customer
+      inquiries — automatically, around the clock.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Get started free</a>
+      <a href="#how-it-works" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+          <path d="M6.5 5.5 L10.5 8 L6.5 10.5 Z" fill="currentColor" />
+        </svg>
+        See how it works
+      </a>
+    </div>
+
+    <div class="hero-social-proof" aria-label="Social proof">
+      <div class="avatars" aria-hidden="true">
+        <div class="avatar av1">AK</div>
+        <div class="avatar av2">MR</div>
+        <div class="avatar av3">JS</div>
+        <div class="avatar av4">LP</div>
+      </div>
+      <p class="social-text">
+        <strong>240+ businesses</strong> already using Buvo<br />
+        to automate their customer support
+      </p>
+    </div>
+
+    <!-- Browser/Widget Mockup -->
+    <div class="hero-visual" role="img" aria-label="Buvo chat widget demo preview">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <div class="browser-dots" aria-hidden="true">
+            <div class="browser-dot bd1"></div>
+            <div class="browser-dot bd2"></div>
+            <div class="browser-dot bd3"></div>
+          </div>
+          <div class="browser-url">acme-store.com/products</div>
+        </div>
+        <div class="browser-content">
+          <!-- Fake site bg -->
+          <div class="fake-site" aria-hidden="true">
+            <div class="fake-nav-bar"></div>
+            <div class="fake-hero-block"></div>
+            <div class="fake-hero-block sm"></div>
+            <div class="fake-hero-block sm" style="width:45%;margin-top:6px;"></div>
+            <div class="fake-grid">
+              <div class="fake-card"></div>
+              <div class="fake-card"></div>
+              <div class="fake-card"></div>
+            </div>
+          </div>
+
+          <!-- Chat Widget -->
+          <div class="widget-container">
+            <div class="chat-window" role="complementary" aria-label="Buvo AI chat widget">
+              <div class="chat-header">
+                <div class="chat-avatar" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8 2 C5 2 3 4 3 7 C3 9 4 10.5 5.5 11.2 L5 13.5 L7.5 12.2 C7.7 12.2 7.8 12.2 8 12.2 C11 12.2 13 10.2 13 7 C13 4 11 2 8 2 Z"
+                      fill="#c8f060" />
+                  </svg>
+                </div>
+                <div class="chat-header-info">
+                  <div class="chat-header-name">Buvo AI</div>
+                  <div class="chat-header-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    Online now
+                  </div>
+                </div>
+              </div>
+              <div class="chat-messages" role="log" aria-live="polite">
+                <div class="msg msg-bot">Hi! 👋 I'm here to help. What can I answer for you today?</div>
+                <div class="msg msg-user">Do you offer a free trial?</div>
+                <div class="msg-typing" aria-label="AI is typing">
+                  <div class="typing-dot"></div>
+                  <div class="typing-dot"></div>
+                  <div class="typing-dot"></div>
+                </div>
+              </div>
+              <div class="chat-input-row">
+                <div class="chat-input-fake" aria-hidden="true">Type your message…</div>
+                <div class="chat-send-btn" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7 L12 7 M8 3 L12 7 L8 11" stroke="#080808" stroke-width="1.6" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="widget-bubble" aria-label="Chat with us" role="button" tabindex="0">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path
+                  d="M3 11 C3 6.5 6.5 3 11 3 C15.5 3 19 6.5 19 11 C19 15.5 15.5 19 11 19 L3 19 L5 15 C3.8 13.8 3 12.5 3 11 Z"
+                  fill="#080808" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="steps-section" id="how-it-works" aria-labelledby="steps-heading">
+    <div class="steps-inner">
+      <div class="steps-header">
+        <span class="section-label">Process</span>
+        <h2 class="section-title" id="steps-heading">Up and running in <em>three steps</em></h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true">01</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="6" width="20" height="16" rx="3" stroke="#c8f060" stroke-width="1.4" />
+              <path d="M9 11 L19 11 M9 15 L15 15" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Feed your knowledge</h3>
+          <p>Paste your FAQs, product descriptions, pricing, or any business information. Buvo learns your business in
+            seconds.</p>
+        </div>
+
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num" aria-hidden="true">02</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M7 14 C7 10 10 7 14 7 C18 7 21 10 21 14 C21 18 18 21 14 21 L7 21 L9 17.5 C7.8 16.5 7 15.3 7 14 Z"
+                stroke="#c8f060" stroke-width="1.4" />
+            </svg>
+          </div>
+          <h3>Customize the widget</h3>
+          <p>Match your brand colors, set a persona name, define the tone of voice. The widget becomes yours.</p>
+        </div>
+
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num" aria-hidden="true">03</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M6 18 L6 10 C6 9 7 8 8 8 L20 8 C21 8 22 9 22 10 L22 18" stroke="#c8f060" stroke-width="1.4"
+                stroke-linecap="round" />
+              <path d="M4 18 L24 18" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Paste one script tag</h3>
+          <p>Copy a single line of HTML into your website. The AI assistant goes live instantly — no backend, no devs
+            needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section id="features" aria-labelledby="features-heading">
+    <div class="features-section">
+      <span class="section-label reveal">Capabilities</span>
+      <h2 class="section-title reveal" id="features-heading">Everything you need to <em>delight</em> your customers</h2>
+      <p class="section-sub reveal">Buvo is more than a chatbot — it's a full AI customer success layer for your
+        website.</p>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3 L11 19 M3 11 L19 11" stroke="#c8f060" stroke-width="1.6" stroke-linecap="round" />
+              <circle cx="11" cy="11" r="7" stroke="#c8f060" stroke-width="1.4" />
+            </svg>
+          </div>
+          <h3>Instant answers, 24/7</h3>
+          <p>No wait times, no ticket queues. Customers get accurate answers the moment they ask — at 3am or 3pm.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 6 L18 6 M4 11 L14 11 M4 16 L11 16" stroke="#c8f060" stroke-width="1.4"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Your knowledge, your rules</h3>
+          <p>Train on your exact content — support docs, product pages, pricing tables. The AI never guesses outside
+            your data.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path
+                d="M11 4 C7 4 4 7 4 10.5 C4 14 7 17 11 17 C12 17 13 16.8 14 16.4 L17 18 L16.5 15 C17.5 14 18 12.3 18 10.5 C18 7 15 4 11 4 Z"
+                stroke="#c8f060" stroke-width="1.4" />
+            </svg>
+          </div>
+          <h3>Human handoff</h3>
+          <p>When a question is too complex, Buvo seamlessly escalates to your team — with full conversation context
+            attached.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="2" stroke="#c8f060" stroke-width="1.4" />
+              <rect x="12" y="3" width="7" height="7" rx="2" stroke="#c8f060" stroke-width="1.4" />
+              <rect x="3" y="12" width="7" height="7" rx="2" stroke="#c8f060" stroke-width="1.4" />
+              <path d="M15.5 12 L15.5 19 M12 15.5 L19 15.5" stroke="#c8f060" stroke-width="1.4"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Works on any website</h3>
+          <p>WordPress, Shopify, Webflow, plain HTML — if it has a <code
+              style="font-size:12px; color:var(--accent)">&lt;body&gt;</code> tag, Buvo works on it.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 16 L8 9 L12 13 L15 8 L18 12" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <rect x="3" y="3" width="16" height="16" rx="3" stroke="#c8f060" stroke-width="1.4" />
+            </svg>
+          </div>
+          <h3>Analytics dashboard</h3>
+          <p>See what customers ask most, where conversations drop, and how the AI performs — all in one clean
+            dashboard.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3 C6.6 3 3 6.6 3 11 C3 15.4 6.6 19 11 19 C15.4 19 19 15.4 19 11" stroke="#c8f060"
+                stroke-width="1.4" stroke-linecap="round" />
+              <path d="M16 3 L16 8 L19 5" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Multiple languages</h3>
+          <p>Buvo detects the customer's language and replies in kind — supporting 40+ languages out of the box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EMBED CODE ═══ -->
+  <section class="code-section" aria-labelledby="code-heading">
+    <div class="code-inner">
+      <div>
+        <span class="section-label reveal">Integration</span>
+        <h2 class="section-title reveal" id="code-heading">One line of code.<br /><em>That's it.</em></h2>
+        <p class="section-sub reveal">Paste the snippet before the closing <code
+            style="color:var(--accent);font-size:14px">&lt;/body&gt;</code> tag. Your AI assistant is live within
+          seconds. No build step, no npm packages, no backend setup required.</p>
+      </div>
+
+      <div class="code-block reveal">
+        <div class="code-block-header">
+          <span class="code-block-title">index.html</span>
+          <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy embed code">Copy</button>
+        </div>
+        <pre class="code-content" aria-label="Embed code snippet"><span class="c-comment">&lt;!-- Paste before &lt;/body&gt; --&gt;</span>
+<span class="c-tag">&lt;script</span>
+  <span class="c-attr">src</span>=<span class="c-val">"https://cdn.buvo.io/widget.js"</span>
+  <span class="c-attr">data-key</span>=<span class="c-val">"your-api-key"</span>
+  <span class="c-attr">data-color</span>=<span class="c-val">"#c8f060"</span>
+  <span class="c-attr">defer</span>
+<span class="c-tag">&gt;&lt;/script&gt;</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="pricing-section">
+      <span class="section-label reveal">Pricing</span>
+      <h2 class="section-title reveal" id="pricing-heading" style="margin:0 auto; text-align:center;">Simple
+        pricing,<br /><em>no surprises</em></h2>
+      <p class="section-sub reveal" style="margin: 16px auto 0; text-align:center;">Start free. Scale as you grow.
+        Cancel anytime.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <p class="pricing-plan">Starter</p>
+          <div class="pricing-price"><sup>$</sup>0</div>
+          <p class="pricing-period">Free forever</p>
+          <ul class="pricing-features" aria-label="Starter plan features">
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>1 website</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>500 conversations/mo</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>1 knowledge source</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Basic analytics</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-outline">Get started free</button>
+        </div>
+
+        <div class="pricing-card featured reveal reveal-delay-1" aria-label="Most popular plan">
+          <span class="pricing-badge" aria-label="Most popular">Most popular</span>
+          <p class="pricing-plan">Growth</p>
+          <div class="pricing-price"><sup>$</sup>49</div>
+          <p class="pricing-period">per month, per workspace</p>
+          <ul class="pricing-features" aria-label="Growth plan features">
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>5 websites</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>10,000 conversations/mo</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Unlimited knowledge sources</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Human handoff</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Full analytics + exports</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Remove Buvo branding</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-accent">Start 14-day free trial</button>
+        </div>
+
+        <div class="pricing-card reveal reveal-delay-2">
+          <p class="pricing-plan">Enterprise</p>
+          <div class="pricing-price" style="font-size:38px;">Custom</div>
+          <p class="pricing-period">volume pricing</p>
+          <ul class="pricing-features" aria-label="Enterprise plan features">
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Unlimited websites</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Unlimited conversations</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>Dedicated AI fine-tuning</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>SLA + dedicated support</li>
+            <li><span class="check-icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5 L4.2 7.5 L8 3" stroke="#c8f060" stroke-width="1.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span>SSO + team permissions</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-outline">Contact sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section class="testimonials-section" aria-labelledby="testi-heading">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <span class="section-label reveal">Testimonials</span>
+        <h2 class="section-title reveal" id="testi-heading" style="margin: 0 auto; text-align:center;">Businesses love
+          <em>Buvo</em>
+        </h2>
+      </div>
+
+      <div class="testi-grid">
+        <article class="testi-card reveal">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span
+              class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star"
+              aria-hidden="true">★</span>
+          </div>
+          <p class="testi-text">"We reduced incoming support emails by 68% in the first month. The AI handles everything
+            from shipping questions to return policies perfectly."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#1a2e20; color:#60e090;" aria-hidden="true">SL</div>
+            <div>
+              <div class="testi-name">Sophie L.</div>
+              <div class="testi-role">Head of Operations, Nordly</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span
+              class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star"
+              aria-hidden="true">★</span>
+          </div>
+          <p class="testi-text">"Setup took me literally five minutes. I pasted my product FAQ, picked a color, and
+            done. My customers now get instant answers I used to have to write manually."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#1e1a30; color:#9080e0;" aria-hidden="true">DK</div>
+            <div>
+              <div class="testi-name">Daniel K.</div>
+              <div class="testi-role">Founder, Kraftform Studio</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span
+              class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star"
+              aria-hidden="true">★</span>
+          </div>
+          <p class="testi-text">"We manage 12 client websites and Buvo runs on all of them. The per-workspace pricing is
+            incredibly fair compared to everything else we tried."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#2a1e18; color:#e09060;" aria-hidden="true">MO</div>
+            <div>
+              <div class="testi-name">Maria O.</div>
+              <div class="testi-role">CEO, Brightwave Agency</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Ready to give your website<br /><em>an AI brain?</em></h2>
+    <p class="cta-sub">Free to start. No credit card. Live in 5 minutes.</p>
+    <a href="#" class="btn-primary" style="font-size:16px; padding:16px 40px;">Create your free account</a>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer role="contentinfo">
+    <a href="/" class="footer-logo" aria-label="Buvo home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="10" fill="#c8f060" />
+        <path
+          d="M8 10 C8 10, 10 8, 14 8 C18 8, 20 10, 20 13 C20 15.5, 18.5 17, 16 17.5 L20 24 L17 24 L13.5 17.5 L11 17.5 L11 24 L8 24 Z"
+          fill="#080808" />
+        <path d="M11 10.5 L11 15 L14 15 C16.5 15, 17.5 14, 17.5 12.75 C17.5 11.5, 16.5 10.5, 14 10.5 Z"
+          fill="#080808" />
+      </svg>
+      <span class="footer-logo-text">buvo</span>
+    </a>
+
+    <ul class="footer-links" aria-label="Footer navigation">
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="mailto:hello@buvo.io">Contact</a></li>
+    </ul>
+
+    <p class="footer-copy">© 2025 Buvo. All rights reserved.</p>
+  </footer>
+
+  <script src="./src/assets/home.js"></script>
+</body>
+
 </html>

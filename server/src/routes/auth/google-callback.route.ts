@@ -67,44 +67,36 @@ export class GoogleCallBackRoute extends BaseRoute {
 
     try {
       const now = new Date().toISOString();
-console.log("BEFORE SELECT", googleUser.name, googleUser.id, googleUser.email);
 
-
-console.log("BEFORE TEST");
-
-const test = await env.DB.prepare(
-  "SELECT 1 as test"
-).first();
-
-console.log("AFTER TEST", test);
-
+      const test = await env.DB.prepare(
+        "SELECT 1 as test"
+      ).first();
 
       const existing = await env.DB.prepare(
         `SELECT id FROM users WHERE google_id = ? OR email = ?`
       )
         .bind(googleUser.id, googleUser.email)
         .first<{ id: number }>();
-console.log("AFTER SELECT", googleUser.name, googleUser.id);
-
       if (existing) {
         await env.DB.prepare(
           `UPDATE users 
-           SET name = ?, google_id = ?, login_at = ? 
+           SET name = ?, google_id = ?, picture_url = ?, login_at = ?
            WHERE id = ?`
         )
-          .bind(googleUser.name, googleUser.id, now, existing.id)
+          .bind(googleUser.name, googleUser.id, googleUser.picture, now, existing.id)
           .run();
 
         userId = existing.id;
       } else {
         const res = await env.DB.prepare(
-          `INSERT INTO users (email, name, google_id, login_at) 
-           VALUES (?, ?, ?, ?)`
+          `INSERT INTO users (email, name, google_id, picture_url, login_at) 
+           VALUES (?, ?, ?, ?, ?)`
         )
           .bind(
             googleUser.email,
             googleUser.name,
             googleUser.id,
+            googleUser.picture,
             now
           )
           .run();
@@ -124,9 +116,8 @@ console.log("AFTER SELECT", googleUser.name, googleUser.id);
 
     const sessionToken = this.base64Encode(payload);
 
-    const cookie = `session=${sessionToken}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=${
-      60 * 60 * 24 * 7
-    }`;
+    const cookie = `session=${sessionToken}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=${60 * 60 * 24 * 7
+      }`;
 
     const frontendUrl =
       env.FRONTEND_URL || "http://localhost:5173";
